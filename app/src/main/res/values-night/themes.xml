@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Theme utama app -->
+    <style name="Theme.TerminalUnited" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#00FF7A</item>
+    </style>
+
+    <!-- Theme Splash / NoActionBar -->
+    <style name="Theme.TerminalUnited.NoActionBar"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+    
     <!--
      https://material.io/develop/android/theming/dark
     -->
