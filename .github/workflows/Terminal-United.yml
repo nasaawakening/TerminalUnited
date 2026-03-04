@@ -1,36 +1,75 @@
-Isi dengan ini supaya runner bisa build dengan sukses:
-
-```yaml
-name: Terminal United CI
+name: Terminal United Pro Release
 
 on:
   push:
     branches:
+      - master
       - main
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/release.keystore
+
+      - name: Read versionCode from Gradle
+        id: version
+        run: |
+          VERSION_CODE=$(grep versionCode app/build.gradle | awk '{print $2}')
+          VERSION_NAME=$(grep versionName app/build.gradle | awk -F '"' '{print $2}')
+          echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_OUTPUT
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
+
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          git log -10 --pretty=format:"- %s" > changelog.txt
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          cat changelog.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-      - name: Setup Android SDK
+      - name: Setup Android
         uses: android-actions/setup-android@v3
+
+      - name: Accept Licenses
+        run: yes | sdkmanager --licenses
+
+      - name: Grant Permission
+        run: chmod +x gradlew
+
+      - name: Build Signed Release
+        run: ./gradlew assembleRelease
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Rename APK
+        run: |
+          mv app/build/outputs/apk/release/*.apk \
+          TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}-${{ steps.version.outputs.VERSION_CODE }}.apk
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          api-levels: 24
-          build-tools: "36.0.0"
-
-      - name: Grant Gradle wrapper permission
-        run: chmod +x ./gradlew
-
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+          tag_name: v${{ steps.version.outputs.VERSION_NAME }}
+          name: TerminalUnited v${{ steps.version.outputs.VERSION_NAME }}
+          body: ${{ steps.changelog.outputs.CHANGELOG }}
+          files: TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}-${{ steps.version.outputs.VERSION_CODE }}.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
