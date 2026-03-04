@@ -44,18 +44,16 @@ jobs:
       - name: Grant Execute Permission
         run: chmod +x gradlew
 
-- name: Download bootstrap
+     - name: Download Bootstrap Files
   run: |
     cd app/src/main/cpp
-    wget https://example.com/bootstrap-aarch64.zip
 
-      - name: Build Release
-        run: ./gradlew assembleRelease
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-arm.zip
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-i686.zip
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-x86_64.zip
 
-      - name: Rename APK
-        run: |
-          mv app/build/outputs/apk/release/*.apk \
-            TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}.apk
+    ls -lh
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
