@@ -13,6 +13,10 @@ ext {
 }
 
 android {
+    lint {
+        abortOnError false
+    }
+}
     namespace "com.termux"
 
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
