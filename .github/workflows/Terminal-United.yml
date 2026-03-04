@@ -21,13 +21,14 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/release.keystore
 
-      - name: Read versionCode from Gradle
-        id: version
-        run: |
-          VERSION_CODE=$(grep versionCode app/build.gradle | awk '{print $2}')
-          VERSION_NAME=$(grep versionName app/build.gradle | awk -F '"' '{print $2}')
-          echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_OUTPUT
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
+      - name: Generate Version
+  id: version
+  run: |
+    VERSION_CODE=$(git rev-list --count HEAD)
+    VERSION_NAME="1.0.$VERSION_CODE"
+
+    echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_OUTPUT
+    echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
 
       - name: Generate Changelog
         id: changelog
