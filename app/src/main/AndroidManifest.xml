@@ -50,20 +50,23 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".app.TermuxActivity"
-            android:exported="true"
-            android:configChanges="orientation|screenSize|smallestScreenSize|density|screenLayout|keyboard|keyboardHidden|navigation"
-            android:label="@string/application_name"
-            android:launchMode="singleTask"
-            android:resizeableActivity="true"
-            android:theme="@style/Theme.TermuxActivity.DayNight.NoActionBar"
-            android:theme="@style/Theme.TerminalUnited.NoActionBar"
-            tools:targetApi="n">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    android:name=".SplashActivity"
+    android:theme="@style/Theme.TerminalUnited.NoActionBar"
+    android:exported="true"
+    android:ConfigChanges="orientation|screenSize|smallestScreenSize|density|screenLayout|keyboard|keyboardHidden|navigation"
+    android:label="@string/application_name"
+    android:launchMode="singleTask"
+    android:resizeableActivity="true"
+    tools:targetApi="n">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+
+</activity>
+
+<activity android:name=".MainActivity"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
