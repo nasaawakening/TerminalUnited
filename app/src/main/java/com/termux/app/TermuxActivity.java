@@ -397,17 +397,19 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         if (mTermuxService.isTermuxSessionsEmpty()) {
             if (mIsVisible) {
                 TermuxInstaller.setupBootstrapIfNeeded(TermuxActivity.this, () -> {
-                    if (mTermuxService == null) return; // Activity might have been destroyed.
-                    try {
-                        boolean launchFailsafe = false;
-                        if (intent != null && intent.getExtras() != null) {
-                            launchFailsafe = intent.getExtras().getBoolean(TERMUX_ACTIVITY.EXTRA_FAILSAFE_SESSION, false);
-                        }
-                        mTermuxTerminalSessionActivityClient.addNewSession(launchFailsafe, null);
-                    } catch (WindowManager.BadTokenException e) {
-                        // Activity finished - ignore.
-                    }
-                });
+    if (mTermuxService == null) return;
+
+    injectTerminalUnitedCommands();  //🔥 ini dia
+
+    try {
+        boolean launchFailsafe = false;
+        if (intent != null && intent.getExtras() != null) {
+            launchFailsafe = intent.getExtras().getBoolean(TERMUX_ACTIVITY.EXTRA_FAILSAFE_SESSION, false);
+        }
+        mTermuxTerminalSessionActivityClient.addNewSession(launchFailsafe, null);
+    } catch (WindowManager.BadTokenException e) {
+    }
+});
             } else {
                 // The service connected while not in foreground - just bail out.
                 finishActivityIfNotFinishing();
@@ -1009,5 +1011,51 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
+private void injectTerminalUnitedCommands() {
+    try {
+        java.io.File homeDir = new java.io.File(getFilesDir(), "home");
+        if (!homeDir.exists()) homeDir.mkdirs();
 
+        java.io.File bashrc = new java.io.File(homeDir, ".bashrc");
+
+        if (!bashrc.exists()) {
+            bashrc.createNewFile();
+        }
+
+        String content =
+                "\n# === TerminalUnited Custom Commands ===\n" +
+                "build() { mkdir \"$@\"; }\n" +
+                "forge() { pkg \"$@\"; }\n" +
+                "scan() { ls \"$@\"; }\n" +
+                "tvl() { cd \"$@\"; }\n" +
+                "dty() {\n" +
+                "  if [ \"$1\" = \"-f\" ]; then shift; rm -rf \"$@\";\n" +
+                "  else rm \"$@\"; fi\n" +
+                "}\n" +
+                "wipe() { clear; }\n" +
+                "hu() {\n" +
+                "  echo \"TerminalUnited Commands:\";\n" +
+                "  echo \"build  -> mkdir\";\n" +
+                "  echo \"forge  -> pkg\";\n" +
+                "  echo \"scan   -> ls\";\n" +
+                "  echo \"tvl    -> cd\";\n" +
+                "  echo \"dty    -> rm\";\n" +
+                "  echo \"dty -f -> rm -rf\";\n" +
+                "  echo \"wipe   -> clear\";\n" +
+                "}\n" +
+                "echo \"🔥 Welcome to TerminalUnited\"\n";
+
+        String existing = new String(java.nio.file.Files.readAllBytes(bashrc.toPath()));
+        if (!existing.contains("TerminalUnited Custom Commands")) {
+            java.nio.file.Files.write(
+                bashrc.toPath(),
+                content.getBytes(),
+                java.nio.file.StandardOpenOption.APPEND
+            );
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 }
