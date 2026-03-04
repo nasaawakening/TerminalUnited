@@ -61,8 +61,8 @@ jobs:
           ls -lh
 
       # 8️⃣ Build Release APK
-      - name: Build Release
-        run: ./gradlew assembleRelease
+      - name: Build Release (clean + build)
+        run: ./gradlew clean assembleRelease
 
       # 9️⃣ Rename APK
       - name: Rename APK
