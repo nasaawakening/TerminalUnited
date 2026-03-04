@@ -44,6 +44,11 @@ jobs:
       - name: Grant Execute Permission
         run: chmod +x gradlew
 
+- name: Download bootstrap
+  run: |
+    cd app/src/main/cpp
+    wget https://example.com/bootstrap-aarch64.zip
+
       - name: Build Release
         run: ./gradlew assembleRelease
 
