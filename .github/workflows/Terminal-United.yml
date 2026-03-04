@@ -14,28 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Decode Keystore
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/release.keystore
 
-      - name: Read version from Gradle
-  id: version
-  run: |
-    VERSION_CODE=$(grep "versionCode" app/build.gradle | head -1 | sed 's/[^0-9]*//g')
-    VERSION_NAME=$(grep "versionName" app/build.gradle | head -1 | sed 's/.*"\(.*\)".*/\1/')
-    echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_OUTPUT
-    echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
-
-      - name: Generate Changelog
-        id: changelog
+      - name: Generate Version
+        id: version
         run: |
-          git log -10 --pretty=format:"- %s" > changelog.txt
-          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
-          cat changelog.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          COMMIT_COUNT=$(git rev-list --count HEAD)
+          VERSION_CODE=$COMMIT_COUNT
+          VERSION_NAME="1.0.$COMMIT_COUNT"
+          echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_OUTPUT
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -43,33 +35,28 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Setup Android
+      - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
       - name: Accept Licenses
         run: yes | sdkmanager --licenses
 
-      - name: Grant Permission
+      - name: Grant Execute Permission
         run: chmod +x gradlew
 
-      - name: Build Signed Release
+      - name: Build Release
         run: ./gradlew assembleRelease
-        env:
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
       - name: Rename APK
         run: |
           mv app/build/outputs/apk/release/*.apk \
-          TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}-${{ steps.version.outputs.VERSION_CODE }}.apk
+            TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}.apk
 
-      - name: Create Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.VERSION_NAME }}
           name: TerminalUnited v${{ steps.version.outputs.VERSION_NAME }}
-          body: ${{ steps.changelog.outputs.CHANGELOG }}
-          files: TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}-${{ steps.version.outputs.VERSION_CODE }}.apk
+          files: TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
