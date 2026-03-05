@@ -1,7 +1,7 @@
 package com.terminalunited.shared.shell.command;
 
-import com.terminalunited.shared.errors.Errno;
-import com.terminalunited.shared.shell.command.result.ResultConfig;
+import com.termux.shared.errors.Errno;
+import com.termux.shared.shell.command.result.ResultConfig;
 
 import java.util.Formatter;
 import java.util.IllegalFormatException;
