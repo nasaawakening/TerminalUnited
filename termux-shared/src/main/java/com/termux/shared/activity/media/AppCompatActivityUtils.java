@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.theme.NightMode;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.theme.NightMode;
 
 public class AppCompatActivityUtils {
 
