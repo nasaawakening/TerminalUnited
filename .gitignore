@@ -37,3 +37,8 @@ local.properties
 .swp
 ehthumbs.db
 Thumbs.db
+
+!app/src/main/cpp/bootstrap-aarch64.zip
+!app/src/main/cpp/bootstrap-arm.zip
+!app/src/main/cpp/bootstrap-i686.zip
+!app/src/main/cpp/bootstrap-x86_64.zip
