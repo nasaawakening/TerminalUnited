@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.terminalunited.shared.shell;
+package com.termux.shared.shell;
 
 import java.io.BufferedReader;
 import java.io.IOException;
