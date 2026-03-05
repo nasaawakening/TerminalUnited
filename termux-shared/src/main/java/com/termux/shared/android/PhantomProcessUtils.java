@@ -1,4 +1,4 @@
-package com.terminalunited.shared.android;
+package com.termux.shared.android;
 
 import android.Manifest;
 import android.content.Context;
