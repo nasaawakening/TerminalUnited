@@ -1,4 +1,4 @@
-package com.terminalunited.shared.shell.command.environment;
+package com.termux.shared.shell.command.environment;
 
 import android.content.Context;
 
