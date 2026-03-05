@@ -9,9 +9,9 @@ import androidx.annotation.Nullable;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.primitives.Primitives;
-import com.terminalunited.shared.file.FileUtils;
-import com.terminalunited.shared.file.filesystem.FileType;
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.file.FileUtils;
+import com.termux.shared.file.filesystem.FileType;
+import com.termux.shared.logger.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
