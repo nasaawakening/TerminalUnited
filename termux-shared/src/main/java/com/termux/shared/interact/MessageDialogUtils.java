@@ -1,4 +1,4 @@
-package com.terminalunited.shared.interact;
+package com.termux.shared.interact;
 
 import android.app.Activity;
 import android.app.AlertDialog;
