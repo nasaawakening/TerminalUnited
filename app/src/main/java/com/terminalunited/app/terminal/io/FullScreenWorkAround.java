@@ -1,4 +1,4 @@
-package com.terminalunited.app.terminal.io;
+package com.termux.app.terminal.io;
 
 import android.graphics.Rect;
 import android.view.View;
