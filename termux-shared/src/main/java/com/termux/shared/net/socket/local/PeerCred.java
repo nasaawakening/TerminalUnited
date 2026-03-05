@@ -5,10 +5,10 @@ import android.content.Context;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.android.ProcessUtils;
-import com.terminalunited.shared.android.UserUtils;
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.markdown.MarkdownUtils;
+import com.termux.shared.android.ProcessUtils;
+import com.termux.shared.android.UserUtils;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.markdown.MarkdownUtils;
 
 /** The {@link PeerCred} of the {@link LocalClientSocket} containing info of client/peer. */
 @Keep
