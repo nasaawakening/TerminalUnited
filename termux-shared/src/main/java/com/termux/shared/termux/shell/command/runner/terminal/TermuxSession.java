@@ -7,17 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.common.base.Joiner;
-import com.terminalunited.shared.R;
-import com.terminalunited.shared.shell.command.ExecutionCommand;
-import com.terminalunited.shared.shell.command.environment.ShellEnvironmentUtils;
-import com.terminalunited.shared.shell.command.environment.UnixShellEnvironment;
-import com.terminalunited.shared.shell.command.result.ResultData;
-import com.terminalunited.shared.errors.Errno;
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.shell.command.environment.IShellEnvironment;
-import com.terminalunited.shared.shell.ShellUtils;
-import com.terminalunited.terminal.TerminalSession;
-import com.terminalunited.terminal.TerminalSessionClient;
+import com.termux.shared.R;
+import com.termux.shared.shell.command.ExecutionCommand;
+import com.termux.shared.shell.command.environment.ShellEnvironmentUtils;
+import com.termux.shared.shell.command.environment.UnixShellEnvironment;
+import com.termux.shared.shell.command.result.ResultData;
+import com.termux.shared.errors.Errno;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.shell.command.environment.IShellEnvironment;
+import com.termux.shared.shell.ShellUtils;
+import com.termux.terminal.TerminalSession;
+import com.termux.terminal.TerminalSessionClient;
 
 import java.io.File;
 import java.util.Collections;
