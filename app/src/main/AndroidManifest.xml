@@ -44,12 +44,12 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/Theme.TerminalUnited">
+        android:theme="@style/Theme.terminalUnited">
 
 <activity
     android:name=".SplashActivity"
     android:exported="true"
-    android:theme="@style/Theme.TerminalUnited.NoActionBar">
+    android:theme="@style/Theme.terminalUnited.NoActionBar">
 
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
