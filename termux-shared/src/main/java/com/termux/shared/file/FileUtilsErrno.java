@@ -1,4 +1,4 @@
-package com.terminalunited.shared.file;
+package com.termux.shared.file;
 
 import com.termux.shared.errors.Errno;
 
