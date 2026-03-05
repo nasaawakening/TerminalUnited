@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.terminalunited.shared.R;
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.R;
+import com.termux.shared.logger.Logger;
 
 public class MessageDialogUtils {
 
