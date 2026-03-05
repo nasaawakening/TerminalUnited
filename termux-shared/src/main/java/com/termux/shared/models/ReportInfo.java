@@ -1,4 +1,4 @@
-package com.terminalunited.shared.models;
+package com.termux.shared.models;
 
 import androidx.annotation.Keep;
 
