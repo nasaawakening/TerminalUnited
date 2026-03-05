@@ -25,7 +25,7 @@
 
 package com.terminalunited.shared.file.filesystem;
 
-import static com.terminalunited.shared.file.filesystem.FilePermission.*;
+import static com.termux.shared.file.filesystem.FilePermission.*;
 
 import java.util.*;
 
