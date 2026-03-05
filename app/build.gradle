@@ -151,18 +151,6 @@ dependencies {
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
     }
 
-if (!tasks.findByName("downloadBootstraps")) {
-
-tasks.register("downloadBootstraps") {
-
-    doLast {
-        println "Bootstrap check..."
-    }
-
-}
-
-}
-
 task versionName {
     doLast {
         print android.defaultConfig.versionName
