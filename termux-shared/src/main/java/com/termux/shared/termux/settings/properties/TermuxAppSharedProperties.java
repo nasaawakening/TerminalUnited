@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.termux.TermuxConstants;
+import com.termux.shared.termux.TermuxConstants;
 
 public class TermuxAppSharedProperties extends TermuxSharedProperties {
 
