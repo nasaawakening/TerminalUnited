@@ -11,20 +11,20 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.terminalunited.shared.R;
-import com.terminalunited.shared.android.AndroidUtils;
-import com.terminalunited.shared.data.DataUtils;
-import com.terminalunited.shared.file.FileUtils;
-import com.terminalunited.shared.reflection.ReflectionUtils;
-import com.terminalunited.shared.shell.command.runner.app.AppShell;
-import com.terminalunited.shared.termux.file.TermuxFileUtils;
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.markdown.MarkdownUtils;
-import com.terminalunited.shared.shell.command.ExecutionCommand;
-import com.terminalunited.shared.errors.Error;
-import com.terminalunited.shared.android.PackageUtils;
-import com.terminalunited.shared.termux.TermuxConstants.TERMUX_APP;
-import com.terminalunited.shared.termux.shell.command.environment.TermuxShellEnvironment;
+import com.termux.shared.R;
+import com.termux.shared.android.AndroidUtils;
+import com.termux.shared.data.DataUtils;
+import com.termux.shared.file.FileUtils;
+import com.termux.shared.reflection.ReflectionUtils;
+import com.termux.shared.shell.command.runner.app.AppShell;
+import com.termux.shared.termux.file.TermuxFileUtils;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.markdown.MarkdownUtils;
+import com.termux.shared.shell.command.ExecutionCommand;
+import com.termux.shared.errors.Error;
+import com.termux.shared.android.PackageUtils;
+import com.termux.shared.termux.TermuxConstants.TERMUX_APP;
+import com.termux.shared.termux.shell.command.environment.TermuxShellEnvironment;
 
 import org.apache.commons.io.IOUtils;
 
