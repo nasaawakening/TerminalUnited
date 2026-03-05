@@ -1,4 +1,4 @@
-package com.terminalunited.app.terminal;
+package com.termux.app.terminal;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
