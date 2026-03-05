@@ -9,7 +9,7 @@ import android.os.Build;
 
 import androidx.annotation.Nullable;
 
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.logger.Logger;
 
 public class NotificationUtils {
 
