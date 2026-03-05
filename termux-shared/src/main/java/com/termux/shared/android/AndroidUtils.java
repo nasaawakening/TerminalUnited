@@ -1,4 +1,4 @@
-package com.terminalunited.shared.android;
+package com.termux.shared.android;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
