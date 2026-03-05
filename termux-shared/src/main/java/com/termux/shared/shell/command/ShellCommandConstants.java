@@ -1,4 +1,4 @@
-package com.terminalunited.shared.shell.command;
+package com.termux.shared.shell.command;
 
 import com.termux.shared.errors.Errno;
 import com.termux.shared.shell.command.result.ResultConfig;
