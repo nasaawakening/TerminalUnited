@@ -4,10 +4,10 @@ import android.Manifest;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.markdown.MarkdownUtils;
-import com.terminalunited.shared.net.socket.local.ILocalSocketManager;
-import com.terminalunited.shared.net.socket.local.LocalSocketRunConfig;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.markdown.MarkdownUtils;
+import com.termux.shared.net.socket.local.ILocalSocketManager;
+import com.termux.shared.net.socket.local.LocalSocketRunConfig;
 
 import java.io.Serializable;
 
