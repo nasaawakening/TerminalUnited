@@ -808,8 +808,11 @@ public final class TermuxService extends Service implements AppShell.AppShellCli
         // Set notification priority
         // If holding a wake or wifi lock consider the notification of high priority since it's using power,
         // otherwise use a low priority
-        int priority = (wakeLockHeld) ? 
-NotificationUtils.getNotificationBuilder(
+        int priority = wakeLockHeld
+    ? NotificationCompat.PRIORITY_HIGH
+    : NotificationCompat.PRIORITY_LOW;
+
+NotificationCompat.Builder builder = NotificationUtils.getNotificationBuilder(
         TermuxConstants.TERMUX_APP_NOTIFICATION_CHANNEL_ID,
         priority,
         TermuxConstants.TERMUX_APP_NAME,
