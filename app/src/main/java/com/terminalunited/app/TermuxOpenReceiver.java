@@ -1,4 +1,4 @@
-package com.terminalunited.app;
+package com.termux.app;
 
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
