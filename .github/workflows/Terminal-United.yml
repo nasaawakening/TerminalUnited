@@ -2,57 +2,46 @@ name: TerminalUnited Build
 
 on:
   push:
-    branches:
-      - master
-  workflow_dispatch:
+    branches: [ master, main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 17
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
+    - name: Install zip
+      run: sudo apt-get update && sudo apt-get install -y zip
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+    - name: Make bootstrap
+      run: |
+        chmod +x scripts/make_bootstrap.sh
+        ./scripts/make_bootstrap.sh
 
-      - name: Give gradlew permission
-        run: chmod +x gradlew
+    - name: Grant gradle permission
+      run: chmod +x gradlew
 
-      - name: Download bootstrap files
-        run: |
-        mkdir -p app/src/main/cpp
+    - name: Build APK
+      run: ./gradlew assembleRelease
 
-        wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip -O app/src/main/cpp/bootstrap-aarch64.zip
-    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-arm.zip -O app/src/main/cpp/bootstrap-arm.zip
-    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-i686.zip -O app/src/main/cpp/bootstrap-i686.zip
-    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-x86_64.zip -O app/src/main/cpp/bootstrap-x86_64.zip
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: TerminalUnited
+        path: app/build/outputs/apk/release/*.apk
 
-      - name: Clean Project
-        run: ./gradlew clean
-
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: TerminalUnited-APK
-          path: app/build/outputs/apk/release/*.apk
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: build-${{ github.run_number }}
-          name: TerminalUnited Build ${{ github.run_number }}
-          files: app/build/outputs/apk/release/*.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: auto-${{ github.run_number }}
+        files: app/build/outputs/apk/release/*.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
