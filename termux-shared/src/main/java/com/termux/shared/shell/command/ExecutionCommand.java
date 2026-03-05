@@ -1,4 +1,4 @@
-package com.terminalunited.shared.shell.command;
+package com.termux.shared.shell.command;
 
 import android.content.Intent;
 import android.net.Uri;
