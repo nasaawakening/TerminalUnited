@@ -1,4 +1,4 @@
-package com.terminalunited.view.textselection;
+package com.termux.view.textselection;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;
@@ -13,8 +13,8 @@ import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import com.terminalunited.view.R;
-import com.terminalunited.view.TerminalView;
+import com.termux.view.R;
+import com.termux.view.TerminalView;
 import com.terminalunited.view.support.PopupWindowCompatGingerbread;
 
 @SuppressLint("ViewConstructor")
