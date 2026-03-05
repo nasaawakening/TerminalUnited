@@ -6,10 +6,10 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.shell.command.ExecutionCommand;
-import com.terminalunited.shared.shell.command.runner.app.AppShell;
-import com.terminalunited.shared.termux.settings.preferences.TermuxAppSharedPreferences;
-import com.terminalunited.shared.termux.shell.command.runner.terminal.TermuxSession;
+import com.termux.shared.shell.command.ExecutionCommand;
+import com.termux.shared.shell.command.runner.app.AppShell;
+import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
+import com.termux.shared.termux.shell.command.runner.terminal.TermuxSession;
 
 import java.util.ArrayList;
 import java.util.List;
