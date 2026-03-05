@@ -1,4 +1,4 @@
-package com.terminalunited.shared.activities;
+package com.termux.shared.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
