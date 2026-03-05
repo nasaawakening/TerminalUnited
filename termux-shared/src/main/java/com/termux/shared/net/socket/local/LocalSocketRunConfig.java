@@ -2,9 +2,9 @@ package com.terminalunited.shared.net.socket.local;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.file.FileUtils;
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.markdown.MarkdownUtils;
+import com.termux.shared.file.FileUtils;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.markdown.MarkdownUtils;
 
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
