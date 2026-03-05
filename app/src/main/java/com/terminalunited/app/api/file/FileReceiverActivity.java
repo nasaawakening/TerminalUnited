@@ -1,4 +1,4 @@
-package com.terminalunited.app.api.file;
+package com.termux.app.api.file;
 
 import android.content.Context;
 import android.content.Intent;
