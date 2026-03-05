@@ -27,11 +27,14 @@ jobs:
       - name: Give gradlew permission
         run: chmod +x gradlew
 
-      - name: Download Termux Bootstrap
+      - name: Download bootstrap files
         run: |
         mkdir -p app/src/main/cpp
-        wget   https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip \
-    -O app/src/main/cpp/bootstrap-aarch64.zip
+
+        wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip -O app/src/main/cpp/bootstrap-aarch64.zip
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-arm.zip -O app/src/main/cpp/bootstrap-arm.zip
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-i686.zip -O app/src/main/cpp/bootstrap-i686.zip
+    wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-x86_64.zip -O app/src/main/cpp/bootstrap-x86_64.zip
 
       - name: Clean Project
         run: ./gradlew clean
