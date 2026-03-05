@@ -1,4 +1,4 @@
-package com.terminalunited.app.activities;
+package com.termux.app.activities;
 
 import android.content.Context;
 import android.os.Bundle;
