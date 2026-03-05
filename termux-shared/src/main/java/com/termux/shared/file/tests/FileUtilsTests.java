@@ -1,4 +1,4 @@
-package com.terminalunited.shared.file.tests;
+package com.termux.shared.file.tests;
 
 import android.content.Context;
 
