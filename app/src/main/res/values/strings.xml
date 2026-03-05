@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!DOCTYPE resources [
-    <!ENTITY TERMUX_PACKAGE_NAME "com.Terminalunited">
-    <!ENTITY TERMUX_APP_NAME "Terminalunited">
-    <!ENTITY TERMUX_API_APP_NAME "Terminalunited:API">
-    <!ENTITY TERMUX_BOOT_APP_NAME "Terminalunited:Boot">
-    <!ENTITY TERMUX_FLOAT_APP_NAME "Terminalunited:Float">
-    <!ENTITY TERMUX_STYLING_APP_NAME "Terminalunited:Styling">
-    <!ENTITY TERMUX_TASKER_APP_NAME "Terminalunited:Tasker">
-    <!ENTITY TERMUX_WIDGET_APP_NAME "Terminalinited:Widget">
+    <!ENTITY TERMUX_PACKAGE_NAME "com.terminalunited">
+    <!ENTITY TERMUX_APP_NAME "terminalunited">
+    <!ENTITY TERMUX_API_APP_NAME "terminalunited:API">
+    <!ENTITY TERMUX_BOOT_APP_NAME "terminalunited:Boot">
+    <!ENTITY TERMUX_FLOAT_APP_NAME "terminalunited:Float">
+    <!ENTITY TERMUX_STYLING_APP_NAME "terminalunited:Styling">
+    <!ENTITY TERMUX_TASKER_APP_NAME "terminalunited:Tasker">
+    <!ENTITY TERMUX_WIDGET_APP_NAME "terminalinited:Widget">
     ]>
 
 <resources>
