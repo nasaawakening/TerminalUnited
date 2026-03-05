@@ -3,14 +3,19 @@ name: Build TerminalUnited APK
 on:
   push:
     branches:
-      - master
       - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Source
         uses: actions/checkout@v4
 
@@ -19,15 +24,22 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+          cache: gradle
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Grant execute permission
+      - name: Grant Gradle permission
         run: chmod +x gradlew
 
       - name: Build APK
         run: ./gradlew assembleDebug
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TerminalUnited-APK
+          path: app/build/outputs/apk/debug/*.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -35,11 +47,3 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: TerminalUnited v${{ github.run_number }}
           files: app/build/outputs/apk/debug/*.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: TerminalUnited-APK
-          path: app/build/outputs/apk/debug/*.apk
