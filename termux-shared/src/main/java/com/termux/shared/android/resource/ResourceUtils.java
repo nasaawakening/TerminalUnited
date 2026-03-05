@@ -1,4 +1,4 @@
-package com.terminalunited.shared.android.resource;
+package com.termux.shared.android.resource;
 
 import android.content.Context;
 
