@@ -1,4 +1,4 @@
-package com.Terminalunited.app;
+package com.terminalunited.app;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
