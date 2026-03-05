@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.google.common.base.Strings;
-import com.terminalunited.shared.R;
-import com.terminalunited.shared.theme.ThemeUtils;
+import com.termux.shared.R;
+import com.termux.shared.theme.ThemeUtils;
 
 import org.commonmark.ext.gfm.strikethrough.Strikethrough;
 import org.commonmark.node.BlockQuote;
