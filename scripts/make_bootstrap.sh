@@ -2,20 +2,30 @@
 
 set -e
 
-BOOTDIR=app/src/main/cpp
+echo "Cleaning old bootstrap..."
 
-mkdir -p $BOOTDIR
+rm -f app/src/main/cpp/bootstrap-*.zip
 
-echo "Creating bootstrap archives..."
+echo "Creating bootstrap folder..."
 
-mkdir bootstrap_tmp
-echo "TerminalUnited bootstrap" > bootstrap_tmp/readme.txt
+mkdir -p bootstrap/bin
+mkdir -p bootstrap/etc
 
-zip -r $BOOTDIR/bootstrap-aarch64.zip bootstrap_tmp
-zip -r $BOOTDIR/bootstrap-arm.zip bootstrap_tmp
-zip -r $BOOTDIR/bootstrap-i686.zip bootstrap_tmp
-zip -r $BOOTDIR/bootstrap-x86_64.zip bootstrap_tmp
+echo "Creating basic commands..."
 
-rm -rf bootstrap_tmp
+echo '#!/bin/sh
+echo "Welcome to TerminalUnited"' > bootstrap/bin/tu
+chmod +x bootstrap/bin/tu
 
-echo "Bootstrap created!"
+echo "Packaging bootstrap..."
+
+cd bootstrap
+
+zip -r ../app/src/main/cpp/bootstrap-aarch64.zip .
+zip -r ../app/src/main/cpp/bootstrap-arm.zip .
+zip -r ../app/src/main/cpp/bootstrap-i686.zip .
+zip -r ../app/src/main/cpp/bootstrap-x86_64.zip .
+
+cd ..
+
+echo "Bootstrap created successfully"
