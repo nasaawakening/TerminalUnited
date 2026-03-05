@@ -1,12 +1,12 @@
-package com.termux.shared.android.resource;
+package com.terminalunited.shared.android.resource;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.logger.Logger;
+import com.terminalunited.shared.data.DataUtils;
+import com.terminalunited.shared.logger.Logger;
 
 public class ResourceUtils {
 

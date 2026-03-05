@@ -1,6 +1,6 @@
 package com.Terminalunited.app;
 
-import com.termux.shared.termux.data.TermuxUrlUtils;
+import com.terminalunited.shared.termux.data.TermuxUrlUtils;
 
 import org.junit.Assert;
 import org.junit.Test;

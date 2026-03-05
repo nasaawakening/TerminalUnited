@@ -1,4 +1,4 @@
-package com.termux.app.api.file;
+package com.terminalunited.app.api.file;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,20 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.terminalunited.R;
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.data.IntentUtils;
-import com.termux.shared.net.uri.UriUtils;
-import com.termux.shared.interact.MessageDialogUtils;
-import com.termux.shared.net.uri.UriScheme;
-import com.termux.shared.termux.interact.TextInputDialogUtils;
-import com.termux.shared.termux.TermuxConstants;
-import com.termux.shared.termux.TermuxConstants.TERMUX_APP;
-import com.termux.shared.termux.TermuxConstants.TERMUX_APP.TERMUX_SERVICE;
-import com.termux.app.TermuxService;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.termux.settings.properties.TermuxAppSharedProperties;
-import com.termux.shared.termux.settings.properties.TermuxPropertyConstants;
+import com.terminalunited.shared.android.PackageUtils;
+import com.terminalunited.shared.data.DataUtils;
+import com.terminalunited.shared.data.IntentUtils;
+import com.terminalunited.shared.net.uri.UriUtils;
+import com.terminalunited.shared.interact.MessageDialogUtils;
+import com.terminalunited.shared.net.uri.UriScheme;
+import com.terminalunited.shared.termux.interact.TextInputDialogUtils;
+import com.terminalunited.shared.termux.TermuxConstants;
+import com.terminalunited.shared.termux.TermuxConstants.TERMUX_APP;
+import com.terminalunited.shared.termux.TermuxConstants.TERMUX_APP.TERMUX_SERVICE;
+import com.terminalunited.app.TermuxService;
+import com.terminalunited.shared.logger.Logger;
+import com.terminalunited.shared.termux.settings.properties.TermuxAppSharedProperties;
+import com.terminalunited.shared.termux.settings.properties.TermuxPropertyConstants;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

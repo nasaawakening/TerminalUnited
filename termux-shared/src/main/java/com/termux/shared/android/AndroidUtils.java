@@ -1,4 +1,4 @@
-package com.termux.shared.android;
+package com.terminalunited.shared.android;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,10 +9,10 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 
 import com.google.common.base.Joiner;
-import com.termux.shared.R;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.markdown.MarkdownUtils;
+import com.terminalunited.shared.R;
+import com.terminalunited.shared.data.DataUtils;
+import com.terminalunited.shared.logger.Logger;
+import com.terminalunited.shared.markdown.MarkdownUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

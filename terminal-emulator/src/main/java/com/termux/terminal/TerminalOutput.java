@@ -1,4 +1,4 @@
-package com.termux.terminal;
+package com.terminalunited.terminal;
 
 import java.nio.charset.StandardCharsets;
 

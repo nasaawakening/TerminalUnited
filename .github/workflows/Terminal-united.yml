@@ -1,43 +1,45 @@
-name: Build and Release APK
+name: Build TerminalUnited APK
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout Source
+        uses: actions/checkout@v4
 
-    - name: Set up JDK
-      uses: actions/setup-java@v4
-      with:
-        distribution: temurin
-        java-version: 17
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
-    - name: Grant permission
-      run: chmod +x gradlew
+      - name: Grant execute permission
+        run: chmod +x gradlew
 
-    - name: Build Release APK
-      run: ./gradlew assembleRelease
+      - name: Build APK
+        run: ./gradlew assembleDebug
 
-    - name: Get version
-      id: version
-      run: echo "VERSION=v$(date +'%Y.%m.%d.%H%M')" >> $GITHUB_OUTPUT
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: TerminalUnited v${{ github.run_number }}
+          files: app/build/outputs/apk/debug/*.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: ${{ steps.version.outputs.VERSION }}
-        name: TerminalUnited ${{ steps.version.outputs.VERSION }}
-        files: app/build/outputs/apk/release/*.apk
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: TerminalUnited-APK
+          path: app/build/outputs/apk/debug/*.apk

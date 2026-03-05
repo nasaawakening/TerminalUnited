@@ -1,4 +1,4 @@
-package com.termux.shared.interact;
+package com.terminalunited.shared.interact;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,13 +13,13 @@ import android.os.Environment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.termux.shared.R;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.data.IntentUtils;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.errors.Error;
-import com.termux.shared.android.PermissionUtils;
+import com.terminalunited.shared.R;
+import com.terminalunited.shared.data.DataUtils;
+import com.terminalunited.shared.data.IntentUtils;
+import com.terminalunited.shared.file.FileUtils;
+import com.terminalunited.shared.logger.Logger;
+import com.terminalunited.shared.errors.Error;
+import com.terminalunited.shared.android.PermissionUtils;
 
 import java.nio.charset.Charset;
 

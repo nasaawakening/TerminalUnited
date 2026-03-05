@@ -1,4 +1,4 @@
-package com.termux.app.terminal;
+package com.terminalunited.app.terminal;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,20 +17,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.terminalunited.R;
-import com.termux.shared.interact.ShareUtils;
-import com.termux.shared.termux.shell.command.runner.terminal.TermuxSession;
-import com.termux.shared.termux.interact.TextInputDialogUtils;
-import com.termux.app.TermuxActivity;
-import com.termux.shared.termux.terminal.TermuxTerminalSessionClientBase;
-import com.termux.shared.termux.TermuxConstants;
-import com.termux.app.TermuxService;
-import com.termux.shared.termux.settings.properties.TermuxPropertyConstants;
-import com.termux.shared.termux.terminal.io.BellHandler;
-import com.termux.shared.logger.Logger;
-import com.termux.terminal.TerminalColors;
-import com.termux.terminal.TerminalSession;
-import com.termux.terminal.TerminalSessionClient;
-import com.termux.terminal.TextStyle;
+import com.terminalunited.shared.interact.ShareUtils;
+import com.terminalunited.shared.termux.shell.command.runner.terminal.TermuxSession;
+import com.terminalunited.shared.termux.interact.TextInputDialogUtils;
+import com.terminalunited.app.TermuxActivity;
+import com.terminalunited.shared.termux.terminal.TermuxTerminalSessionClientBase;
+import com.terminalunited.shared.termux.TermuxConstants;
+import com.terminalunited.app.TermuxService;
+import com.terminalunited.shared.termux.settings.properties.TermuxPropertyConstants;
+import com.terminalunited.shared.termux.terminal.io.BellHandler;
+import com.terminalunited.shared.logger.Logger;
+import com.terminalunited.terminal.TerminalColors;
+import com.terminalunited.terminal.TerminalSession;
+import com.terminalunited.terminal.TerminalSessionClient;
+import com.terminalunited.terminal.TextStyle;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -271,9 +271,9 @@ public class TermuxTerminalSessionActivityClient extends TermuxTerminalSessionCl
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
 
             try {
-                mBellSoundId = mBellSoundPool.load(mActivity, com.termux.shared.R.raw.bell, 1);
+                mBellSoundId = mBellSoundPool.load(mActivity, com.terminalunited.shared.R.raw.bell, 1);
             } catch (Exception e){
-                // Catch java.lang.RuntimeException: Unable to resume activity {com.termux/com.termux.app.TermuxActivity}: android.content.res.Resources$NotFoundException: File res/raw/bell.ogg from drawable resource ID
+                // Catch java.lang.RuntimeException: Unable to resume activity {com.terminalunited/com.terminalunited.app.TermuxActivity}: android.content.res.Resources$NotFoundException: File res/raw/bell.ogg from drawable resource ID
                 Logger.logStackTraceWithMessage(LOG_TAG, "Failed to load bell sound pool", e);
             }
         }

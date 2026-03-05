@@ -1,4 +1,4 @@
-package com.termux.shared.termux;
+package com.terminalunited.shared.termux;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,20 +11,20 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.R;
-import com.termux.shared.android.AndroidUtils;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.reflection.ReflectionUtils;
-import com.termux.shared.shell.command.runner.app.AppShell;
-import com.termux.shared.termux.file.TermuxFileUtils;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.markdown.MarkdownUtils;
-import com.termux.shared.shell.command.ExecutionCommand;
-import com.termux.shared.errors.Error;
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.termux.TermuxConstants.TERMUX_APP;
-import com.termux.shared.termux.shell.command.environment.TermuxShellEnvironment;
+import com.terminalunited.shared.R;
+import com.terminalunited.shared.android.AndroidUtils;
+import com.terminalunited.shared.data.DataUtils;
+import com.terminalunited.shared.file.FileUtils;
+import com.terminalunited.shared.reflection.ReflectionUtils;
+import com.terminalunited.shared.shell.command.runner.app.AppShell;
+import com.terminalunited.shared.termux.file.TermuxFileUtils;
+import com.terminalunited.shared.logger.Logger;
+import com.terminalunited.shared.markdown.MarkdownUtils;
+import com.terminalunited.shared.shell.command.ExecutionCommand;
+import com.terminalunited.shared.errors.Error;
+import com.terminalunited.shared.android.PackageUtils;
+import com.terminalunited.shared.termux.TermuxConstants.TERMUX_APP;
+import com.terminalunited.shared.termux.shell.command.environment.TermuxShellEnvironment;
 
 import org.apache.commons.io.IOUtils;
 
@@ -144,9 +144,9 @@ public class TermuxUtils {
      * Check if Termux app is installed and enabled. This can be used by external apps that don't
      * share `sharedUserId` with the Termux app.
      *
-     * If your third-party app is targeting sdk `30` (android `11`), then it needs to add `com.termux`
+     * If your third-party app is targeting sdk `30` (android `11`), then it needs to add `com.terminalunited`
      * package to the `queries` element or request `QUERY_ALL_PACKAGES` permission in its
-     * `AndroidManifest.xml`. Otherwise it will get `PackageSetting{...... com.termux/......} BLOCKED`
+     * `AndroidManifest.xml`. Otherwise it will get `PackageSetting{...... com.terminalunited/......} BLOCKED`
      * errors in `logcat` and `RUN_COMMAND` won't work.
      * Check [package-visibility](https://developer.android.com/training/basics/intents/package-visibility#package-name),
      * `QUERY_ALL_PACKAGES` [googleplay policy](https://support.google.com/googleplay/android-developer/answer/10158779
@@ -155,7 +155,7 @@ public class TermuxUtils {
      * {@code
      * <manifest
      *     <queries>
-     *         <package android:name="com.termux" />
+     *         <package android:name="com.terminalunited" />
      *    </queries>
      * </manifest>
      * }
@@ -587,7 +587,7 @@ public class TermuxUtils {
     public static String geAPTInfoMarkdownString(@NonNull final Context context) {
 
         String aptInfoScript;
-        InputStream inputStream = context.getResources().openRawResource(com.termux.shared.R.raw.apt_info_script);
+        InputStream inputStream = context.getResources().openRawResource(com.terminalunited.shared.R.raw.apt_info_script);
         try {
             aptInfoScript = IOUtils.toString(inputStream, Charset.defaultCharset());
         } catch (IOException e) {

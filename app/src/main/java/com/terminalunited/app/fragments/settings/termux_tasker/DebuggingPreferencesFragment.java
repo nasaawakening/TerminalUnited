@@ -1,4 +1,4 @@
-package com.termux.app.fragments.settings.termux_tasker;
+package com.terminalunited.app.fragments.settings.termux_tasker;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.terminalunited.R;
-import com.termux.shared.termux.settings.preferences.TermuxTaskerAppSharedPreferences;
+import com.terminalunited.shared.termux.settings.preferences.TermuxTaskerAppSharedPreferences;
 
 @Keep
 public class DebuggingPreferencesFragment extends PreferenceFragmentCompat {
@@ -40,7 +40,7 @@ public class DebuggingPreferencesFragment extends PreferenceFragmentCompat {
             TermuxTaskerAppSharedPreferences preferences = TermuxTaskerAppSharedPreferences.build(context, true);
             if (preferences == null) return;
 
-            com.termux.app.fragments.settings.termux.DebuggingPreferencesFragment.
+            com.terminalunited.app.fragments.settings.termux.DebuggingPreferencesFragment.
                 setLogLevelListPreferenceData(logLevelListPreference, context, preferences.getLogLevel(true));
             loggingCategory.addPreference(logLevelListPreference);
         }
