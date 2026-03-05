@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.logger.Logger;
 
 import java.util.Arrays;
 import java.util.Collections;
