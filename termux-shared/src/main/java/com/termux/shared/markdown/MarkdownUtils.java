@@ -1,4 +1,4 @@
-package com.terminalunited.shared.markdown;
+package com.termux.shared.markdown;
 
 import android.content.Context;
 import android.graphics.Typeface;
