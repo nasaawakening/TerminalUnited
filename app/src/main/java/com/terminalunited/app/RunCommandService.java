@@ -1,4 +1,4 @@
-package com.terminalunited.app;
+package com.termux.app;
 
 import android.app.Notification;
 import android.app.NotificationManager;
