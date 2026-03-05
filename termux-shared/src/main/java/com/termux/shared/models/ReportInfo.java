@@ -2,8 +2,8 @@ package com.terminalunited.shared.models;
 
 import androidx.annotation.Keep;
 
-import com.terminalunited.shared.markdown.MarkdownUtils;
-import com.terminalunited.shared.android.AndroidUtils;
+import com.termux.shared.markdown.MarkdownUtils;
+import com.termux.shared.android.AndroidUtils;
 
 import java.io.Serializable;
 
