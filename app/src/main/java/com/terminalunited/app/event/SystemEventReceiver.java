@@ -1,4 +1,4 @@
-package com.terminalunited.app.event;
+package com.termux.app.event;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
