@@ -2,11 +2,11 @@ package com.terminalunited.shared.net.socket.local;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.data.DataUtils;
-import com.terminalunited.shared.errors.Error;
-import com.terminalunited.shared.jni.models.JniResult;
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.markdown.MarkdownUtils;
+import com.termux.shared.data.DataUtils;
+import com.termux.shared.errors.Error;
+import com.termux.shared.jni.models.JniResult;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.markdown.MarkdownUtils;
 
 import java.io.BufferedWriter;
 import java.io.Closeable;
