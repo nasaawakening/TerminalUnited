@@ -151,6 +151,39 @@ dependencies {
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
     }
 
+tasks.register("downloadBootstraps") {
+
+    doLast {
+
+        def base = "https://github.com/termux/termux-packages/releases/download/bootstrap-2026.02.12-r1+apt.android-7"
+
+        def files = [
+                "bootstrap-aarch64.zip",
+                "bootstrap-arm.zip",
+                "bootstrap-i686.zip",
+                "bootstrap-x86_64.zip"
+        ]
+
+        files.each { file ->
+
+            def dest = file("src/main/cpp/${file}")
+
+            if (!dest.exists()) {
+
+                println "Downloading ${file}"
+
+                new URL("${base}/${file}")
+                        .withInputStream { i ->
+                            dest.withOutputStream { it << i }
+                        }
+
+            }
+        }
+    }
+}
+
+preBuild.dependsOn downloadBootstraps
+
 task versionName {
     doLast {
         print android.defaultConfig.versionName

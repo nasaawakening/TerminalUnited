@@ -813,7 +813,7 @@ public final class TermuxService extends Service implements AppShell.AppShellCli
 
         // Build the notification
         Notification.Builder builder =  NotificationUtils.geNotificationBuilder(this,
-            TermuxConstants.TERMUX_APP_NOTIFICATION_CHANNEL_ID, priority,
+3            TermuxConstants.TERMUX_APP_NOTIFICATION_CHANNEL_ID, priority,
             TermuxConstants.TERMUX_APP_NAME, notificationText, null,
             contentIntent, null, NotificationUtils.NOTIFICATION_MODE_SILENT);
         if (builder == null)  return null;
@@ -830,28 +830,49 @@ public final class TermuxService extends Service implements AppShell.AppShellCli
         // TermuxSessions are always ongoing
         builder.setOngoing(true);
 
+       /* Exit Button */
+       Intent exitIntent = new Intent(this, TermuxService.class);
+       exitIntent.setAction(TERMUX_SERVICE.ACTION_STOP_SERVICE);
 
-        // Set Exit button action
-        Intent exitIntent = new Intent(this, TermuxService.class).setAction(TERMUX_SERVICE.ACTION_STOP_SERVICE);
-        builder.addAction(android.R.drawable.ic_delete, res.getString(R.string.notification_action_exit), PendingIntent.getService(
-    this,
-    0,
-    exitIntent,
-    PendingIntent.FLAG_IMMUTABLE
-)
+       builder.addAction(
+       android.R.drawable.ic_delete,
+       res.getString(R.string.notification_action_exit),
+       PendingIntent.getService(
+       this,
+       0,
+      exitIntent,
+      PendingIntent.FLAG_IMMUTABLE
+    )
+);
 
+       /* Wakelock Button */
+       String newWakeAction = wakeLockHeld
+       ? TERMUX_SERVICE.ACTION_WAKE_UNLOCK
+       : TERMUX_SERVICE.ACTION_WAKE_LOCK;
 
-        // Set Wakelock button actions
-        String newWakeAction = wakeLockHeld ? TERMUX_SERVICE.ACTION_WAKE_UNLOCK : TERMUX_SERVICE.ACTION_WAKE_LOCK;
-        Intent toggleWakeLockIntent = new Intent(this, TermuxService.class).setAction(newWakeAction);
-        String actionTitle = res.getString(wakeLockHeld ? R.string.notification_action_wake_unlock : R.string.notification_action_wake_lock);
-        int actionIcon = wakeLockHeld ? android.R.drawable.ic_lock_idle_lock : android.R.drawable.ic_lock_lock;
-        builder.addAction(actionIcon, actionTitle, PendingIntent.getService(
-    this,
-    0,
-    toggleWakeLockIntent,
-    PendingIntent.FLAG_IMMUTABLE
-));
+       Intent toggleWakeLockIntent = new Intent(this, TermuxService.class);
+       toggleWakeLockIntent.setAction(newWakeAction);
+
+       String actionTitle = res.getString(
+       wakeLockHeld
+       ? R.string.notification_action_wake_unlock
+       : R.string.notification_action_wake_lock
+);
+
+       int actionIcon = wakeLockHeld
+       ? android.R.drawable.ic_lock_idle_lock
+       : android.R.drawable.ic_lock_lock;
+
+       builder.addAction(
+       actionIcon,
+       actionTitle,
+       PendingIntent.getService(
+       this,
+       1,
+       toggleWakeLockIntent,
+       PendingIntent.FLAG_IMMUTABLE
+    )
+);
 
 
         return builder.build();
