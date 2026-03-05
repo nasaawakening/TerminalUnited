@@ -1,81 +1,35 @@
-name: TerminalUnited Auto Release
+name: Release TerminalUnited APK
 
 on:
   push:
-    branches:
-      - master
-      - main
-
-permissions:
-  contents: write
+    tags:
+      - "v*"
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout Repo
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      # 2️⃣ Generate Version (Semver Valid)
-      - name: Generate Version
-        id: version
-        run: |
-          COMMIT_COUNT=$(git rev-list --count HEAD)
-          VERSION_CODE=$COMMIT_COUNT
-          VERSION_NAME="1.0.$COMMIT_COUNT"
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 17
 
-          echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_OUTPUT
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
+    - name: Grant Permission
+      run: chmod +x gradlew
 
-      # 3️⃣ Setup Java
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
+    - name: Clean
+      run: ./gradlew clean
 
-      # 4️⃣ Setup Android SDK
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+    - name: Build APK
+      run: ./gradlew assembleDebug
 
-      # 5️⃣ Accept SDK Licenses
-      - name: Accept Licenses
-        run: yes | sdkmanager --licenses
-
-      # 6️⃣ Grant Gradle Permission
-      - name: Grant Execute Permission
-        run: chmod +x gradlew
-
-      # 7️⃣ Download Termux Bootstrap Files
-      - name: Download Bootstrap Files
-        run: |
-          cd app/src/main/cpp
-
-          wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip
-          wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-arm.zip
-          wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-i686.zip
-          wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-x86_64.zip
-
-          ls -lh
-
-      # 8️⃣ Build Release APK
-      - name: Build Release (clean + build)
-        run: ./gradlew clean assembleRelease
-
-      # 9️⃣ Rename APK
-      - name: Rename APK
-        run: |
-          mv app/build/outputs/apk/release/*.apk \
-          TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}.apk
-
-      # 🔟 Create GitHub Release
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.version.outputs.VERSION_NAME }}
-          name: TerminalUnited v${{ steps.version.outputs.VERSION_NAME }}
-          files: TerminalUnited-v${{ steps.version.outputs.VERSION_NAME }}.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: app/build/outputs/apk/debug/app-debug.apk
