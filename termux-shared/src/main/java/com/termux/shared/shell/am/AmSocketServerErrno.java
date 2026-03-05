@@ -1,6 +1,6 @@
 package com.terminalunited.shared.shell.am;
 
-import com.terminalunited.shared.errors.Errno;
+import com.termux.shared.errors.Errno;
 
 public class AmSocketServerErrno extends Errno {
 
