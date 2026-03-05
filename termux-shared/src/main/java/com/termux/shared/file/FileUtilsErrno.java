@@ -1,6 +1,6 @@
 package com.terminalunited.shared.file;
 
-import com.terminalunited.shared.errors.Errno;
+import com.termux.shared.errors.Errno;
 
 import java.util.HashMap;
 import java.util.Map;
