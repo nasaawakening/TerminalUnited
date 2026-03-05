@@ -2,14 +2,18 @@ name: TerminalUnited Build
 
 on:
   push:
-    branches: [ master, main ]
+    branches:
+      - master
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+
+    - name: Checkout
       uses: actions/checkout@v4
 
     - name: Setup Java
@@ -18,15 +22,18 @@ jobs:
         distribution: temurin
         java-version: 17
 
+    - name: Install Android SDK
+      uses: android-actions/setup-android@v3
+
     - name: Install zip
-      run: sudo apt-get update && sudo apt-get install -y zip
+      run: sudo apt install zip -y
 
     - name: Make bootstrap
       run: |
         chmod +x scripts/make_bootstrap.sh
-        ./scripts/make_bootstrap.sh
+        scripts/make_bootstrap.sh
 
-    - name: Grant gradle permission
+    - name: Grant gradlew
       run: chmod +x gradlew
 
     - name: Build APK
@@ -43,5 +50,3 @@ jobs:
       with:
         tag_name: auto-${{ github.run_number }}
         files: app/build/outputs/apk/release/*.apk
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
