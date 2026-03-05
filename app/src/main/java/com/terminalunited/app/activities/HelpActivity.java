@@ -1,4 +1,4 @@
-package com.terminalunited.app.activities;
+package com.termux.app.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
