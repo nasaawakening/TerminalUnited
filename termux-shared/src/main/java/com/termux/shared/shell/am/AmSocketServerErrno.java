@@ -1,4 +1,4 @@
-package com.terminalunited.shared.shell.am;
+package com.termux.shared.shell.am;
 
 import com.termux.shared.errors.Errno;
 
