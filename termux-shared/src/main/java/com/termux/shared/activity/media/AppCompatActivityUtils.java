@@ -1,4 +1,4 @@
-package com.terminalunited.shared.activity.media;
+package com.termux.shared.activity.media;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
