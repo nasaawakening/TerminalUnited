@@ -32,9 +32,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.button.MaterialButton;
-import com.terminalunited.shared.R;
-import com.terminalunited.shared.termux.terminal.io.TerminalExtraKeys;
-import com.terminalunited.shared.theme.ThemeUtils;
+import com.termux.shared.R;
+import com.termux.shared.termux.terminal.io.TerminalExtraKeys;
+import com.termux.shared.theme.ThemeUtils;
 
 /**
  * A {@link View} showing extra keys (such as Escape, Ctrl, Alt) not normally available on an Android soft
