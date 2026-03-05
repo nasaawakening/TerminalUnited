@@ -1,4 +1,4 @@
-package com.terminalunited.filepicker;
+package com.termux.filepicker;
 
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
