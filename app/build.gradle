@@ -13,11 +13,7 @@ ext {
 }
 
 android {
-    lint {
-        abortOnError false
-    }
-}
-    namespace "com.termux"
+    namespace "com.Terminalunited"
 
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
     ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
@@ -26,23 +22,7 @@ android {
     def splitAPKsForDebugBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_DEBUG_BUILDS") ?: "1"
     def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "0" // F-Droid does not support split APKs #1904
 
-    dependencies {
-        implementation "androidx.annotation:annotation:1.9.0"
-        implementation "androidx.core:core:1.13.1"
-        implementation "androidx.drawerlayout:drawerlayout:1.2.0"
-        implementation "androidx.preference:preference:1.2.1"
-        implementation "androidx.viewpager:viewpager:1.0.0"
-        implementation "com.google.android.material:material:1.12.0"
-        implementation "com.google.guava:guava:24.1-jre"
-        implementation "io.noties.markwon:core:$markwonVersion"
-        implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
-        implementation "io.noties.markwon:linkify:$markwonVersion"
-        implementation "io.noties.markwon:recycler:$markwonVersion"
-        implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-
-        implementation project(":terminal-view")
-        implementation project(":termux-shared")
-    }
+    
 
     defaultConfig {
         applicationId "com.TerminalUnited"
@@ -56,14 +36,14 @@ android {
 
         buildConfigField "String", "TERMUX_PACKAGE_VARIANT", "\"" + project.ext.packageVariant + "\"" // Used by TermuxApplication class
 
-        manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.TerminalUnited"
-        manifestPlaceholders.TERMUX_APP_NAME = "TerminalUnited"
-        manifestPlaceholders.TERMUX_API_APP_NAME = "TerminalUnited:API"
-        manifestPlaceholders.TERMUX_BOOT_APP_NAME = "TerminalUnited:Boot"
-        manifestPlaceholders.TERMUX_FLOAT_APP_NAME = "TerminalUnited:Float"
-        manifestPlaceholders.TERMUX_STYLING_APP_NAME = "TerminalUnited:Styling"
-        manifestPlaceholders.TERMUX_TASKER_APP_NAME = "TerminalUnited:Tasker"
-        manifestPlaceholders.TERMUX_WIDGET_APP_NAME = "TerminalUnited:Widget"
+        manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.Terminalunited"
+        manifestPlaceholders.TERMUX_APP_NAME = "Terminalunited"
+        manifestPlaceholders.TERMUX_API_APP_NAME = "Terminalunited:API"
+        manifestPlaceholders.TERMUX_BOOT_APP_NAME = "Terminalunited:Boot"
+        manifestPlaceholders.TERMUX_FLOAT_APP_NAME = "Terminalunited:Float"
+        manifestPlaceholders.TERMUX_STYLING_APP_NAME = "Terminalunited:Styling"
+        manifestPlaceholders.TERMUX_TASKER_APP_NAME = "Terminalunited:Tasker"
+        manifestPlaceholders.TERMUX_WIDGET_APP_NAME = "Terminalunited:Widget"
 
         externalNativeBuild {
             ndkBuild {
@@ -137,10 +117,10 @@ android {
         variant.outputs.all { output ->
             if (variant.buildType.name == "debug") {
                 def abi = output.getFilter(com.android.build.OutputFile.ABI)
-                outputFileName = new File("TerminalUnited_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "debug") + "_" + (abi ? abi : "universal") + ".apk")
+                outputFileName = new File("Terminalunited_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "debug") + "_" + (abi ? abi : "universal") + ".apk")
             } else if (variant.buildType.name == "release") {
                 def abi = output.getFilter(com.android.build.OutputFile.ABI)
-                outputFileName = new File("TerminalUnited_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "release") + "_" + (abi ? abi : "universal") + ".apk")
+                outputFileName = new File("Terminalunited_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "release") + "_" + (abi ? abi : "universal") + ".apk")
             }
         }
     }
@@ -151,10 +131,25 @@ android {
 }
 
 dependencies {
-    testImplementation "junit:junit:4.13.2"
+        implementation "androidx.annotation:annotation:1.9.0"
+        implementation "androidx.core:core:1.13.1"
+        implementation "androidx.drawerlayout:drawerlayout:1.2.0"
+        implementation "androidx.preference:preference:1.2.1"
+        implementation "androidx.viewpager:viewpager:1.0.0"
+        implementation "com.google.android.material:material:1.12.0"
+        implementation "com.google.guava:guava:24.1-jre"
+        implementation "io.noties.markwon:core:$markwonVersion"
+        implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
+        implementation "io.noties.markwon:linkify:$markwonVersion"
+        implementation "io.noties.markwon:recycler:$markwonVersion"
+        implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+
+        implementation project(":terminal-view")
+        implementation project(":termux-shared")
+        testImplementation "junit:junit:4.13.2"
     testImplementation "org.robolectric:robolectric:4.10"
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
-}
+    }
 
 task versionName {
     doLast {
