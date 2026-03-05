@@ -28,7 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.logger.Logger;
 
 /**
  * Thread utility class continuously reading from an InputStream
