@@ -1,4 +1,4 @@
-package com.terminalunited.shared.jni.models;
+package com.termux.shared.jni.models;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
