@@ -3,9 +3,9 @@ package com.terminalunited.shared.termux.terminal;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.terminal.TerminalSession;
-import com.terminalunited.view.TerminalViewClient;
+import com.termux.shared.logger.Logger;
+import com.termux.terminal.TerminalSession;
+import com.termux.view.TerminalViewClient;
 
 public class TermuxTerminalViewClientBase implements TerminalViewClient {
 
