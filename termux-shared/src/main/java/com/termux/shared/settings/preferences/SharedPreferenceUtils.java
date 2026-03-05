@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.logger.Logger;
 
 import java.util.Set;
 
