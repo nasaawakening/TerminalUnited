@@ -1,4 +1,4 @@
-package com.terminalunited.shared.errors;
+package com.termux.shared.errors;
 
 import android.content.Context;
 
