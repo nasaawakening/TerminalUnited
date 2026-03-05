@@ -1,6 +1,6 @@
 package com.terminalunited.shared.shell.command.result;
 
-import com.terminalunited.shared.errors.Errno;
+import com.termux.shared.errors.Errno;
 
 /** The {@link Class} that defines ResultSender error messages and codes. */
 public class ResultSenderErrno extends Errno {
