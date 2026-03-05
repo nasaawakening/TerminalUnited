@@ -29,9 +29,9 @@ jobs:
 
       - name: Download Termux Bootstrap
         run: |
-          mkdir -p app/src/main/cpp
-          wget https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip \
-          -O app/src/main/cpp/bootstrap-aarch64.zip
+        mkdir -p app/src/main/cpp
+        wget   https://github.com/termux/termux-packages/releases/latest/download/bootstrap-aarch64.zip \
+    -O app/src/main/cpp/bootstrap-aarch64.zip
 
       - name: Clean Project
         run: ./gradlew clean
