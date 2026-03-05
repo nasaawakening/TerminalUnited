@@ -1,4 +1,4 @@
-package com.terminalunited.shared.shell.command.result;
+package com.termux.shared.shell.command.result;
 
 import androidx.annotation.NonNull;
 
