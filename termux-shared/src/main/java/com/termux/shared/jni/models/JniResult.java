@@ -3,7 +3,7 @@ package com.terminalunited.shared.jni.models;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.logger.Logger;
+import com.termux.shared.logger.Logger;
 
 /**
  * A class that can be used to return result for JNI calls with support for multiple fields to easily
