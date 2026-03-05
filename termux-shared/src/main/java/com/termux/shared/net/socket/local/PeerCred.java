@@ -1,4 +1,4 @@
-package com.terminalunited.shared.net.socket.local;
+package com.termux.shared.net.socket.local;
 
 import android.content.Context;
 
