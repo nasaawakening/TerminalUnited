@@ -6,8 +6,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.terminalunited.shared.logger.Logger;
-import com.terminalunited.shared.reflection.ReflectionUtils;
+import com.termux.shared.logger.Logger;
+import com.termux.shared.reflection.ReflectionUtils;
 
 import java.lang.reflect.Method;
 import java.util.Map;
