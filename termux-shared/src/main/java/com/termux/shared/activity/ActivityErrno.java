@@ -1,6 +1,6 @@
 package com.terminalunited.shared.activity;
 
-import com.terminalunited.shared.errors.Errno;
+import com.termux.shared.errors.Errno;
 
 public class ActivityErrno extends Errno {
 
