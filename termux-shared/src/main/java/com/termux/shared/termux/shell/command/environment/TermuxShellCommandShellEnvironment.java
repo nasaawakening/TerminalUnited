@@ -4,11 +4,11 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.terminalunited.shared.shell.command.ExecutionCommand;
-import com.terminalunited.shared.shell.command.environment.ShellCommandShellEnvironment;
-import com.terminalunited.shared.shell.command.environment.ShellEnvironmentUtils;
-import com.terminalunited.shared.termux.settings.preferences.TermuxAppSharedPreferences;
-import com.terminalunited.shared.termux.shell.TermuxShellManager;
+import com.termux.shared.shell.command.ExecutionCommand;
+import com.termux.shared.shell.command.environment.ShellCommandShellEnvironment;
+import com.termux.shared.shell.command.environment.ShellEnvironmentUtils;
+import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
+import com.termux.shared.termux.shell.TermuxShellManager;
 
 import java.util.HashMap;
 
