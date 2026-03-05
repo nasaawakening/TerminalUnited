@@ -1,4 +1,4 @@
-package com.TerminalUnited
+package com.Terminalunited
 
 import android.content.Intent
 import android.os.Bundle
