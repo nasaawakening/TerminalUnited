@@ -5,8 +5,8 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.terminalunited.shared.data.DataUtils;
-import com.terminalunited.shared.file.FileUtils;
+import com.termux.shared.data.DataUtils;
+import com.termux.shared.file.FileUtils;
 
 public class UriUtils {
 
