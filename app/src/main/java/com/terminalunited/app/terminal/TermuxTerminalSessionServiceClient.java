@@ -1,4 +1,4 @@
-package com.terminalunited.app.terminal;
+package com.termux.app.terminal;
 
 import android.app.Service;
 
